@@ -1,0 +1,134 @@
+{
+    "league": {
+        "admin_entry": 856,
+        "closed": true,
+        "draft_dt": "2019-08-07T17:30:00Z",
+        "draft_pick_time_limit": 90,
+        "draft_status": "post",
+        "draft_tz_show": "Europe/Budapest",
+        "id": 305,
+        "ko_rounds": 0,
+        "make_code_public": false,
+        "max_entries": 8,
+        "min_entries": 6,
+        "name": "No Slack Draft 19/20",
+        "scoring": "c",
+        "start_event": 1,
+        "stop_event": 38,
+        "trades": "y",
+        "transaction_mode": "waivers",
+        "variety": "x"
+    },
+    "league_entries": [
+        {
+            "entry_id": 856,
+            "entry_name": "Alltid Redo!",
+            "id": 856,
+            "joined_time": "2019-06-27T12:45:52.667267Z",
+            "player_first_name": "Fredrik",
+            "player_last_name": "Liljedahl",
+            "short_name": "FL",
+            "waiver_pick": 3
+        },
+        {
+            "entry_id": 967,
+            "entry_name": "En salahig blanding",
+            "id": 967,
+            "joined_time": "2019-06-27T12:53:09.312198Z",
+            "player_first_name": "Oskar",
+            "player_last_name": "Casselryd",
+            "short_name": "OC",
+            "waiver_pick": 1
+        },
+        {
+            "entry_id": 1015,
+            "entry_name": "Benchpointer City",
+            "id": 1015,
+            "joined_time": "2019-06-27T12:55:29.552400Z",
+            "player_first_name": "Lucas",
+            "player_last_name": "Ljungberg",
+            "short_name": "LL",
+            "waiver_pick": 4
+        },
+        {
+            "entry_id": 1183,
+            "entry_name": "Peterpiketen",
+            "id": 1183,
+            "joined_time": "2019-06-27T13:04:48.999719Z",
+            "player_first_name": "Peter",
+            "player_last_name": "Jonsson",
+            "short_name": "PJ",
+            "waiver_pick": 2
+        },
+        {
+            "entry_id": 6363,
+            "entry_name": "Prospect XI",
+            "id": 6364,
+            "joined_time": "2019-06-27T20:47:27.450291Z",
+            "player_first_name": "Alexander",
+            "player_last_name": "Manske",
+            "short_name": "AM",
+            "waiver_pick": 6
+        },
+        {
+            "entry_id": 358648,
+            "entry_name": "Never Lucky FC",
+            "id": 359879,
+            "joined_time": "2019-08-07T07:05:29.265795Z",
+            "player_first_name": "Filip",
+            "player_last_name": "Jansson",
+            "short_name": "FJ",
+            "waiver_pick": 5
+        }
+    ],
+    "standings": [
+        {
+            "event_total": 35,
+            "last_rank": 2,
+            "league_entry": 6364,
+            "rank": 1,
+            "rank_sort": 1,
+            "total": 370
+        },
+        {
+            "event_total": 22,
+            "last_rank": 1,
+            "league_entry": 359879,
+            "rank": 2,
+            "rank_sort": 2,
+            "total": 365
+        },
+        {
+            "event_total": 43,
+            "last_rank": 3,
+            "league_entry": 1015,
+            "rank": 3,
+            "rank_sort": 3,
+            "total": 358
+        },
+        {
+            "event_total": 33,
+            "last_rank": 4,
+            "league_entry": 856,
+            "rank": 4,
+            "rank_sort": 4,
+            "total": 332
+        },
+        {
+            "event_total": 29,
+            "last_rank": 5,
+            "league_entry": 1183,
+            "rank": 5,
+            "rank_sort": 5,
+            "total": 327
+        },
+        {
+            "event_total": 32,
+            "last_rank": 6,
+            "league_entry": 967,
+            "rank": 6,
+            "rank_sort": 6,
+            "total": 325
+        }
+    ]
+}

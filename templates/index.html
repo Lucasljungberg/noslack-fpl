@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>NOSLACK FPL</title>
+    <style>
+        .player-name {
+            flex-basis: max-content;
+            align-self: center;
+        }
+    </style>
+</head>
+<body>
+    <span style="font-size: 2px">
+        By using this service you accept that I collect all of your personal data, as I wish, for as long as I want it. This binding contract is obviously more binding than the silly GDPR thing. Some of the data I collect are physical addresses, browser history, bank account details, and passwords for the major password managers. /s
+    </span>
+    {% for manager in teams %}
+        <div style="border: 1px solid black; margin: 2px; display: flex; flex-direction: row; justify-content: space-around;">
+            <div style="width: 20%; height: inherit;">
+                <h2>{{ manager.name }} - {{ manager.team_name }}</h2>
+                <h3>{{ manager.gw_points }} Gameweek {{ gameweek }} points</h3>
+                <h3>{{ manager.points }} gameweek {{ gameweek - 1 }} points</h3>
+                <h3>{{ manager.points + manager.gw_points }} total points</h3>
+            </div>
+            <div style="display: flex; flex-direction: column; width: 50%; align-items: center; justify-content: space-evenly;">
+                <div style="display: flex; flex-direction: row;">
+                {% for player in manager.team.get_players_at_position('gkp') %}
+                    <span class="player-name">
+                        {{ player.static.name }} [{{ player.gw_points }}]
+                    </span>
+                {% endfor %}
+                </div>
+                <br>
+                <div style="display: flex; flex-direction: row; justify-content: space-evenly; width:100%">
+                {% for player in manager.team.get_players_at_position('def') %}
+                    <span class="player-name">
+                        {{ player.static.name }} [{{ player.gw_points }}]
+                    </span>
+                {% endfor %}
+                </div>
+                <br>
+                <div style="display: flex; flex-direction: row; justify-content: space-evenly; width:100%">
+                {% for player in manager.team.get_players_at_position('mid') %}
+                    <span class="player-name">
+                        {{ player.static.name }} [{{ player.gw_points }}]
+                    </span>
+                {% endfor %}
+                </div>
+                <br>
+                <div style="display: flex; flex-direction: row; justify-content: space-evenly; width:100%">
+                {% for player in manager.team.get_players_at_position('fwd') %}
+                    <span class="player-name">
+                        {{ player.static.name }} [{{ player.gw_points }}]
+                    </span>
+                {% endfor %}
+                </div>
+            </div>
+            <div style="display: flex; flex-direction: row; width: 25%">
+                <h4>Bench</h4>
+                <div style="display: flex; flex-direction: column; align-items: center; justify-content: space-evenly; flex-grow: 1;">
+                    <div style="display: flex; flex-direction: row;">
+                    {% set players = manager.team.get_players_at_position('gkp', on_field=False) %}
+                    {% if players|length > 0%}
+                        {% for player in players %}
+                            <span class="player-name">
+                                {{ player.static.name }} [{{ player.gw_points }}]
+                            </span>
+                        {% endfor %}
+                    {% else %}
+                        <span class="player-name">-</span>
+                    {% endif %}
+                    </div>
+                    <br>
+                    <div style="display: flex; flex-direction: row; justify-content: space-evenly; width:100%;">
+                    {% set players = manager.team.get_players_at_position('def', on_field=False) %}
+                    {% if players|length > 0%}
+                        {% for player in players %}
+                            <span class="player-name">
+                                {{ player.static.name }} [{{ player.gw_points }}]
+                            </span>
+                        {% endfor %}
+                    {% else %}
+                        <span class="player-name">-</span>
+                    {% endif %}
+                    </div>
+                    <br>
+                    <div style="display: flex; flex-direction: row; justify-content: space-evenly; width:100%;">
+                    {% set players = manager.team.get_players_at_position('mid', on_field=False) %}
+                    {% if players|length > 0%}
+                        {% for player in players %}
+                            <span class="player-name">
+                                {{ player.static.name }} [{{ player.gw_points }}]
+                            </span>
+                        {% endfor %}
+                    {% else %}
+                        <span class="player-name">-</span>
+                    {% endif %}
+                    </div>
+                    <br>
+                    <div style="display: flex; flex-direction: row; justify-content: space-evenly; width:100%;">
+                    {% set players = manager.team.get_players_at_position('fwd', on_field=False) %}
+                    {% if players|length > 0%}
+                        {% for player in players %}
+                            <span class="player-name">
+                                {{ player.static.name }} [{{ player.gw_points }}]
+                            </span>
+                        {% endfor %}
+                    {% else %}
+                        <span class="player-name">-</span>
+                    {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+</body>
+</html>

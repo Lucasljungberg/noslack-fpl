@@ -102,3 +102,9 @@ venv.bak/
 
 # mypy
 .mypy_cache/
+
+# ============ NON-DEFAULT ============ #
+
+# Vim files
+tags
+*.swp
