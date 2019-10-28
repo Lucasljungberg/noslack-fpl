@@ -3,7 +3,7 @@ import random
 
 from flask import Flask, render_template
 
-from lib import fpl
+from src import fpl
 
 app = Flask(__name__)
 
