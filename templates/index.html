@@ -14,6 +14,7 @@
             position: absolute;
             display: none;
             margin-right: auto;
+            color: black;
         }
         .player-name:hover .player-events {
             display: flex;
@@ -30,6 +31,15 @@
         }
         .integer {
             text-align: right;
+        }
+        .red {
+            color: red;
+        }
+        .green {
+            color: green;
+        }
+        .black {
+            color: black;
         }
     </style>
     <style>
@@ -64,8 +74,10 @@
             <div style="display: flex; flex-direction: column; width: 50%; align-items: center; justify-content: space-evenly;">
                 <div style="display: flex; flex-direction: row;">
                 {% for player in manager.team.get_players_at_position('gkp') %}
-                    <span class="player-name">
-                        {{ player.static.name }} [{{ player.gw_points }}]
+                    <span class="player-name {{ 'black' if player.static.plteam.has_played(gameweek) else 'green' }}">
+                        {{ player.static.name }}
+                        ({{ player.static.plteam.shortname }})
+                        [{{ player.gw_points }}]
                         <span class="player-events">
                             <table class="player-point-event-table">
                                 <thead>
@@ -94,8 +106,10 @@
                 <br>
                 <div style="display: flex; flex-direction: row; justify-content: space-evenly; width:100%">
                 {% for player in manager.team.get_players_at_position('def') %}
-                    <span class="player-name">
-                        {{ player.static.name }} [{{ player.gw_points }}]
+                    <span class="player-name {{ 'black' if player.static.plteam.has_played(gameweek) else 'green' }}">
+                        {{ player.static.name }}
+                        ({{ player.static.plteam.shortname }})
+                        [{{ player.gw_points }}]
                         <span class="player-events">
                             <table class="player-point-event-table">
                                 <thead>
@@ -124,8 +138,10 @@
                 <br>
                 <div style="display: flex; flex-direction: row; justify-content: space-evenly; width:100%">
                 {% for player in manager.team.get_players_at_position('mid') %}
-                    <span class="player-name">
-                        {{ player.static.name }} [{{ player.gw_points }}]
+                    <span class="player-name {{ 'black' if player.static.plteam.has_played(gameweek) else 'green' }}">
+                        {{ player.static.name }}
+                        ({{ player.static.plteam.shortname }})
+                        [{{ player.gw_points }}]
                         <span class="player-events">
                             <table class="player-point-event-table">
                                 <thead>
@@ -154,8 +170,10 @@
                 <br>
                 <div style="display: flex; flex-direction: row; justify-content: space-evenly; width:100%">
                 {% for player in manager.team.get_players_at_position('fwd') %}
-                    <span class="player-name">
-                        {{ player.static.name }} [{{ player.gw_points }}]
+                    <span class="player-name {{ 'black' if player.static.plteam.has_played(gameweek) else 'green' }}">
+                        {{ player.static.name }}
+                        ({{ player.static.plteam.shortname }})
+                        [{{ player.gw_points }}]
                         <span class="player-events">
                             <table class="player-point-event-table">
                                 <thead>
@@ -189,8 +207,10 @@
                     {% set players = manager.team.get_players_at_position('gkp', on_field=False) %}
                     {% if players|length > 0%}
                         {% for player in players %}
-                            <span class="player-name">
-                                {{ player.static.name }} [{{ player.gw_points }}]
+                            <span class="player-name {{ 'black' if player.static.plteam.has_played(gameweek) else 'green' }}">
+                                {{ player.static.name }}
+                                ({{ player.static.plteam.shortname }})
+                                [{{ player.gw_points }}]
                                 <span class="player-events">
                                     <table class="player-point-event-table">
                                         <thead>
@@ -216,7 +236,7 @@
                             </span>
                         {% endfor %}
                     {% else %}
-                        <span class="player-name">-</span>
+                            <span class="player-name">
                     {% endif %}
                     </div>
                     <br>
@@ -224,8 +244,10 @@
                     {% set players = manager.team.get_players_at_position('def', on_field=False) %}
                     {% if players|length > 0%}
                         {% for player in players %}
-                            <span class="player-name">
-                                {{ player.static.name }} [{{ player.gw_points }}]
+                            <span class="player-name {{ 'black' if player.static.plteam.has_played(gameweek) else 'green' }}">
+                                {{ player.static.name }}
+                                ({{ player.static.plteam.shortname }})
+                                [{{ player.gw_points }}]
                                 <span class="player-events">
                                     <table class="player-point-event-table">
                                         <thead>
@@ -251,7 +273,7 @@
                             </span>
                         {% endfor %}
                     {% else %}
-                        <span class="player-name">-</span>
+                        <span class="player-name">
                     {% endif %}
                     </div>
                     <br>
@@ -259,8 +281,10 @@
                     {% set players = manager.team.get_players_at_position('mid', on_field=False) %}
                     {% if players|length > 0%}
                         {% for player in players %}
-                            <span class="player-name">
-                                {{ player.static.name }} [{{ player.gw_points }}]
+                            <span class="player-name {{ 'black' if player.static.plteam.has_played(gameweek) else 'green' }}">
+                                {{ player.static.name }}
+                                ({{ player.static.plteam.shortname }})
+                                [{{ player.gw_points }}]
                                 <span class="player-events">
                                     <table class="player-point-event-table">
                                         <thead>
@@ -286,7 +310,7 @@
                             </span>
                         {% endfor %}
                     {% else %}
-                        <span class="player-name">-</span>
+                        <span class="player-name">
                     {% endif %}
                     </div>
                     <br>
@@ -294,8 +318,10 @@
                     {% set players = manager.team.get_players_at_position('fwd', on_field=False) %}
                     {% if players|length > 0%}
                         {% for player in players %}
-                            <span class="player-name">
-                                {{ player.static.name }} [{{ player.gw_points }}]
+                            <span class="player-name {{ 'black' if player.static.plteam.has_played(gameweek) else 'green' }}">
+                                {{ player.static.name }}
+                                ({{ player.static.plteam.shortname }})
+                                [{{ player.gw_points }}]
                                 <span class="player-events">
                                     <table class="player-point-event-table">
                                         <thead>
