@@ -1,6 +1,7 @@
 import datetime
 import json
 import time
+from collections import namedtuple
 
 from . import static
 from . import api
@@ -10,6 +11,7 @@ league_data = api.StaticInfo.noslack_league()
 static_info = api.StaticInfo.premier_league()
 
 GAMEWEEK = static_info['events']['current']
+GameweekInfo = namedtuple('GameweekInfo', ['managers', 'gameweek'])
 
 class Manager:
     def __init__(self, team_id, name, team_name, points=0):
@@ -144,10 +146,11 @@ team_data = [
 @TimedCache(datetime.timedelta(minutes=1))
 def get_current_state():
     managers = list(star2map(Manager.from_api, team_data))
-    teams = [manager.fetch_gw_team(GAMEWEEK)
+    gameweek = api.StaticInfo.premier_league()['events']['current']
+    teams = [manager.fetch_gw_team(gameweek)
              for manager in managers]
 
-    current_info = api.DynamicInfo.gameweek_stats(GAMEWEEK)
+    current_info = api.DynamicInfo.gameweek_stats(gameweek)
 
     gw_points = [sum(team.current_points(current_info))
                  if team is not None else 0
@@ -162,5 +165,5 @@ def get_current_state():
     managers = sorted(managers, key=lambda m: m.points + m.gw_points,
                       reverse=True)
 
-    return managers
+    return GameweekInfo(managers, gameweek)
 
