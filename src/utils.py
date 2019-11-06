@@ -17,7 +17,7 @@ class TimedCache:
         @wraps(func)
         def inner(*args, **kw):
             if self._should_cache_update():
-                print('Updating...')
                 self.cached_result = func(*args, **kw)
+                self.cached_time = datetime.datetime.now()
             return self.cached_result
         return inner
