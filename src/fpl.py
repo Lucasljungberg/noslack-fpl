@@ -97,10 +97,8 @@ class Player:
         return self.position >= 12
 
     def will_be_benched(self, gameweek):
-        res = (self.static.plteam.has_played(gameweek)
-               and self.events[0].points == 0)
-        print(self, res, self.events)
-        return res
+        return (self.static.plteam.has_played(gameweek)
+                and self.events[0].points == 0)
 
     def point_events_from_data(self, data):
         events =  list(star2map(PlayerEvent.from_api,
