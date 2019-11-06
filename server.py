@@ -9,21 +9,21 @@ app = Flask(__name__)
 
 @app.route('/')
 def index():
-    manager_data = fpl.get_current_state()
+    current_info = fpl.get_current_state()
     return render_template(
         'index.html',
-        teams=manager_data,
-        gameweek=fpl.GAMEWEEK)
+        teams=current_info.managers,
+        gameweek=current_info.gameweek)
 
 @app.errorhandler(404)
 def catch_all(path):
-    time.sleep(random.randint(2, 6))
+    time.sleep(random.randint(10, 30))
 
-    manager_data = fpl.get_current_state()
+    current_info = fpl.get_current_state()
     return render_template(
         'index.html',
-        teams=manager_data,
-        gameweek=fpl.GAMEWEEK), 500
+        teams=current_info.managers,
+        gameweek=current_info.gameweek)
 
 if __name__ == '__main__':
     import os
