@@ -41,6 +41,9 @@
         .black {
             color: black;
         }
+        .italic {
+            font-style: italic;
+        }
     </style>
     <style>
         .current-gw-points {
@@ -74,7 +77,8 @@
             <div style="display: flex; flex-direction: column; width: 50%; align-items: center; justify-content: space-evenly;">
                 <div style="display: flex; flex-direction: row;">
                 {% for player in manager.team.get_players_at_position('gkp') %}
-                    <span class="player-name {{ 'black' if player.static.plteam.has_played(gameweek) else 'green' }}">
+                    <span class="player-name {{ 'black' if player.static.plteam.has_played(gameweek) else 'green' }}
+                                             {{ 'italic' if player.will_be_benched(gameweek) }}">
                         {{ player.static.name }}
                         ({{ player.static.plteam.shortname }})
                         [{{ player.gw_points }}]
@@ -106,7 +110,8 @@
                 <br>
                 <div style="display: flex; flex-direction: row; justify-content: space-evenly; width:100%">
                 {% for player in manager.team.get_players_at_position('def') %}
-                    <span class="player-name {{ 'black' if player.static.plteam.has_played(gameweek) else 'green' }}">
+                    <span class="player-name {{ 'black' if player.static.plteam.has_played(gameweek) else 'green' }}
+                                             {{ 'italic' if player.will_be_benched(gameweek) }}">
                         {{ player.static.name }}
                         ({{ player.static.plteam.shortname }})
                         [{{ player.gw_points }}]
@@ -138,7 +143,8 @@
                 <br>
                 <div style="display: flex; flex-direction: row; justify-content: space-evenly; width:100%">
                 {% for player in manager.team.get_players_at_position('mid') %}
-                    <span class="player-name {{ 'black' if player.static.plteam.has_played(gameweek) else 'green' }}">
+                    <span class="player-name {{ 'black' if player.static.plteam.has_played(gameweek) else 'green' }}
+                                             {{ 'italic' if player.will_be_benched(gameweek) }}">
                         {{ player.static.name }}
                         ({{ player.static.plteam.shortname }})
                         [{{ player.gw_points }}]
@@ -170,7 +176,8 @@
                 <br>
                 <div style="display: flex; flex-direction: row; justify-content: space-evenly; width:100%">
                 {% for player in manager.team.get_players_at_position('fwd') %}
-                    <span class="player-name {{ 'black' if player.static.plteam.has_played(gameweek) else 'green' }}">
+                    <span class="player-name {{ 'black' if player.static.plteam.has_played(gameweek) else 'green' }}
+                                             {{ 'italic' if player.will_be_benched(gameweek) }}">
                         {{ player.static.name }}
                         ({{ player.static.plteam.shortname }})
                         [{{ player.gw_points }}]
@@ -207,7 +214,8 @@
                     {% set players = manager.team.get_players_at_position('gkp', on_field=False) %}
                     {% if players|length > 0%}
                         {% for player in players %}
-                            <span class="player-name {{ 'black' if player.static.plteam.has_played(gameweek) else 'green' }}">
+                            <span class="player-name {{ 'black' if player.static.plteam.has_played(gameweek) else 'green' }}
+                                                     {{ 'italic' if player.will_be_benched(gameweek) }}">
                                 {{ player.static.name }}
                                 ({{ player.static.plteam.shortname }})
                                 [{{ player.gw_points }}]
@@ -244,7 +252,8 @@
                     {% set players = manager.team.get_players_at_position('def', on_field=False) %}
                     {% if players|length > 0%}
                         {% for player in players %}
-                            <span class="player-name {{ 'black' if player.static.plteam.has_played(gameweek) else 'green' }}">
+                            <span class="player-name {{ 'black' if player.static.plteam.has_played(gameweek) else 'green' }}
+                                                     {{ 'italic' if player.will_be_benched(gameweek) }}">
                                 {{ player.static.name }}
                                 ({{ player.static.plteam.shortname }})
                                 [{{ player.gw_points }}]
@@ -281,7 +290,8 @@
                     {% set players = manager.team.get_players_at_position('mid', on_field=False) %}
                     {% if players|length > 0%}
                         {% for player in players %}
-                            <span class="player-name {{ 'black' if player.static.plteam.has_played(gameweek) else 'green' }}">
+                            <span class="player-name {{ 'black' if player.static.plteam.has_played(gameweek) else 'green' }}
+                                                     {{ 'italic' if player.will_be_benched(gameweek) }}">
                                 {{ player.static.name }}
                                 ({{ player.static.plteam.shortname }})
                                 [{{ player.gw_points }}]
@@ -318,7 +328,8 @@
                     {% set players = manager.team.get_players_at_position('fwd', on_field=False) %}
                     {% if players|length > 0%}
                         {% for player in players %}
-                            <span class="player-name {{ 'black' if player.static.plteam.has_played(gameweek) else 'green' }}">
+                            <span class="player-name {{ 'black' if player.static.plteam.has_played(gameweek) else 'green' }}
+                                                     {{ 'italic' if player.will_be_benched(gameweek) }}">
                                 {{ player.static.name }}
                                 ({{ player.static.plteam.shortname }})
                                 [{{ player.gw_points }}]
